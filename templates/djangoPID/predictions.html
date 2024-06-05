@@ -3,13 +3,19 @@
 
 {% block content %}
    <h1>Predictions</h1>
-   <form method="post">
-      {% csrf_token %}
-      {{ form.py }}
-      <button type="submit">Predict</button>
-   </form>
-   {% if results %}
+   <div class="row">
+       <div class="col-md-6">
+           <form method="post">
+               {% csrf_token %}
+               {{ form.as_p }}
+               <button type="submit">Predict</button>
+           </form>
+       </div>
+       <div class="col-md-6">
+           <!-- Add any additional content or elements for the right column -->
+       </div>
+   </div>
+   {% if result %}
       <h2>Result: {{ result }}</h2>
-      {% endif %}
+   {% endif %}
 {% endblock %}
-
