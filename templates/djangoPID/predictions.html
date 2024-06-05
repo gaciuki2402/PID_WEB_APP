@@ -1,13 +1,15 @@
 {% extends 'partials/base.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Predictions{% endblock %}
 
 {% block content %}
-<div class="container">
-   <div class="row mt-4">
-        <div class="col-md-8 offset-md-2">
-            
-        </div>
-   </div> 
-</div>
+   <h1>Predictions</h1>
+   <form method="post">
+      {% csrf_token %}
+      {{ form.py }}
+      <button type="submit">Predict</button>
+   </form>
+   {% if results %}
+      <h2>Result: {{ result }}</h2>
+      {% endif %}
 {% endblock %}
 
