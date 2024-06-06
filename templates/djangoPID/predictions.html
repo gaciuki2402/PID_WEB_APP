@@ -1,21 +1,78 @@
 {% extends 'partials/base.html' %}
+
 {% block title %}Predictions{% endblock %}
 
 {% block content %}
-   <h1>Predictions</h1>
-   <div class="row">
-       <div class="col-md-6">
-           <form method="post">
-               {% csrf_token %}
-               {{ form.as_p }}
-               <button type="submit">Predict</button>
-           </form>
-       </div>
-       <div class="col-md-6">
-           <!-- Add any additional content or elements for the right column -->
-       </div>
-   </div>
-   {% if result %}
-      <h2>Result: {{ result }}</h2>
-   {% endif %}
+<h1>PID Prediction Application</h1>
+<form method="post" action="{% url 'djangoPID-predictions' %}" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            {{ form.age.label_tag }}
+            {{ form.age }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form.stds_uti_history.label_tag }}
+            {{ form.stds_uti_history }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            {{ form.iud_use.label_tag }}
+            {{ form.iud_use }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form.past_pelvic_pain.label_tag }}
+            {{ form.past_pelvic_pain }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            {{ form.imaging_results.label_tag }}
+            {{ form.imaging_results }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form.abnormal_discharge.label_tag }}
+            {{ form.abnormal_discharge }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            {{ form.irregular_periods.label_tag }}
+            {{ form.irregular_periods }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form.dyspareunia.label_tag }}
+            {{ form.dyspareunia }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            {{ form.dysuria.label_tag }}
+            {{ form.dysuria }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form.wbc_count.label_tag }}
+            {{ form.wbc_count }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            {{ form.esr.label_tag }}
+            {{ form.esr }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form.crp_level.label_tag }}
+            {{ form.crp_level }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary btn-block mt-3">Predict</button>
+        </div>
+    </div>
+</form>
+{% if result %}
+    <h2>Result: {{ result }}</h2>
+{% endif %}
 {% endblock %}
