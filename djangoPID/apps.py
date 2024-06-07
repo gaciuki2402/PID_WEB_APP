@@ -7,4 +7,4 @@ class DjangopidConfig(AppConfig):
 
     def ready(self):
         global pipeline
-        pipeline = joblib.load('djangoPID\ml_model\PID_Model.joblib')
+        pipeline = joblib.load('djangoPID/ml_model/PID_Model.joblib')
