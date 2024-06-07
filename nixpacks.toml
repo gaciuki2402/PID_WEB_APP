@@ -1,0 +1,2 @@
+[start]
+cmd = "gunicorn PID.wsgi --log-file=-"
